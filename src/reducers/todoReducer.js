@@ -1,18 +1,29 @@
-let count = 0
-
 const todoReducer = (state = [ ], action ) => {
 
     console.log("todoReducer................start")
-    console.log(state)
+    console.log(state);
 
-    if(action.type === 'REMOVE'){
-        console.log("remove...........")
-        state.splice(action.data, 1)
-        console.log(state)
-        return [...state]
+    switch (action.type) {
+
+        case "ADD" :
+            return [...state,action.data]
+
+        case 'REMOVE' :
+            console.log("remove...........")
+
+            state.splice(action.data, 1)
+
+            return [...state]
+
+        case 'UPDATE' :
+            console.log("reducer update....")
+
+            console.log(state.updating);
+
+            return [...state]
     }
+    return [...state]
 
-    return [...state,'AAA' + count++]
 }
 
 export default todoReducer
