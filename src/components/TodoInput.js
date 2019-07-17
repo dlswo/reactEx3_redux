@@ -1,15 +1,17 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
+import {Button} from 'react-bootstrap'
 
 class TodoInput extends Component{
 
 
     clickHandle = (e) => {
-        const input = this.input.value;
-        console.log("clickHandle")
         this.props.dispatch({
             type:'ADD',
-            data:{input, updating:false}
+            data:{
+                input:this.input.value,
+                updating:false
+            }
         })
     }
 
@@ -19,7 +21,7 @@ class TodoInput extends Component{
             <div>
                 <h3>TodoInput</h3>
                 <input type="text" ref={(input) => this.input = input}/>
-                <button onClick={this.clickHandle}>Click</button>
+                <Button onClick={this.clickHandle}>Click</Button>
             </div>
 
         )

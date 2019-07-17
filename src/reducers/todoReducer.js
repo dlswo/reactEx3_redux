@@ -13,16 +13,12 @@ const todoReducer = (state = [ ], action ) => {
             return [...state]
 
         case 'UPDATE' :
-            console.log(action.data)
-
             return state.map((item, index) => index == action.data ? {...item, updating: !item.updating} : item)
 
         case 'UPDATEINPUT' :
-            console.log("inputupdate")
+            return state.map((item) => item.input === action.id ? {...item, input: action.data.input, updating: !item.updating} : item)
 
-            return state.map((item) => item.input == action.id ? {...item, input: action.data.input, updating: !item.updating} : item)
         default :
-
             return [...state]
     }
 

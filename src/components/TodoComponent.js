@@ -17,6 +17,6 @@ class TodoComponent extends Component{
     }
 }
 const mapStateToProps = (state) => {
-    return {check:state.filter((item) => item.updating == true).hasOwnProperty(0)};
+    return {check:state.filter((item) => item.updating === true).hasOwnProperty(0)};
 }
 export default connect(mapStateToProps)(TodoComponent)

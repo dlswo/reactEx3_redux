@@ -4,10 +4,12 @@ import {connect} from "react-redux";
 class TodoUpdate extends Component{
 
     updateHandle = (e) => {
-        const input = this.input.value;
         this.props.dispatch({
             type:'UPDATEINPUT',
-            data:{input, updating:true},
+            data:{
+                input:this.input.value,
+                updating:true
+            },
             id:this.props.input
         })
     }
@@ -24,7 +26,6 @@ class TodoUpdate extends Component{
 
 }
 const mapStateToProps = (state) => {
-    console.log("update", state.filter((item) => item.updating == true)[0].input)
-    return {input:state.filter((item) => item.updating == true)[0].input}
+    return {input:state.filter((item) => item.updating === true)[0].input}
 }
 export default connect(mapStateToProps)(TodoUpdate)
