@@ -22,7 +22,7 @@ class TodoList extends Component{
     }
 
     render(){
-        const todoLi = this.props.arr.map((item, index) => <li key={index}>{item}<button data-idx={index} onClick={this.clickUp}>UPDATE</button><button data-idx={index} onClick={this.clickDel}>DELETE</button></li>)
+        const todoLi = this.props.arr.map((item, index) => <li key={index}>{item.input}<button data-idx={index} onClick={this.clickUp}>UPDATE</button><button data-idx={index} onClick={this.clickDel}>DELETE</button></li>)
         return(
             <div>
                 <h3>TodoList</h3>
@@ -33,7 +33,8 @@ class TodoList extends Component{
         )
     }
 }
-const mapStateToProps = (action) => {
-    return {arr:action}
+const mapStateToProps = (state) => {
+    console.log("TodoList",state);
+    return {arr:state}
 }
 export default connect(mapStateToProps)(TodoList)

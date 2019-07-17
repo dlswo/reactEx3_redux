@@ -1,7 +1,6 @@
 const todoReducer = (state = [ ], action ) => {
 
     console.log("todoReducer................start")
-    console.log(state);
 
     switch (action.type) {
 
@@ -9,20 +8,23 @@ const todoReducer = (state = [ ], action ) => {
             return [...state,action.data]
 
         case 'REMOVE' :
-            console.log("remove...........")
-
             state.splice(action.data, 1)
 
             return [...state]
 
         case 'UPDATE' :
-            console.log("reducer update....")
+            console.log(action.data)
 
-            console.log(state.updating);
+            return state.map((item, index) => index == action.data ? {...item, updating: !item.updating} : item)
+
+        case 'UPDATEINPUT' :
+            console.log("inputupdate")
+
+            return state.map((item) => item.input == action.id ? {...item, input: action.data.input, updating: !item.updating} : item)
+        default :
 
             return [...state]
     }
-    return [...state]
 
 }
 

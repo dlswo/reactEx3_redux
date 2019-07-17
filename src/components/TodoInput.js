@@ -9,9 +9,8 @@ class TodoInput extends Component{
         console.log("clickHandle")
         this.props.dispatch({
             type:'ADD',
-            data:input
+            data:{input, updating:false}
         })
-        console.log("aaaaaaaaaaaaa", this.props.dataIdx);
     }
 
     render(){
@@ -19,14 +18,11 @@ class TodoInput extends Component{
         return(
             <div>
                 <h3>TodoInput</h3>
-                <input type="text" ref={(input) => this.input = input}></input>
+                <input type="text" ref={(input) => this.input = input}/>
                 <button onClick={this.clickHandle}>Click</button>
             </div>
 
         )
     }
 }
-const updateIdx = (action) => {
-    return {dataIdx:action.data}
-}
-export default connect(updateIdx)(TodoInput)
+export default connect()(TodoInput)
